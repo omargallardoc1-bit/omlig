@@ -3,10 +3,252 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="OMLIG MX crea soluciones digitales para negocios: tarjetas digitales, automatización, IA y experiencias personalizadas.">
+  <meta name="theme-color" content="#07111f">
   <title>OMLIG MX | Digital Solutions</title>
+  <style>
+    :root{
+      --bg:#07111f;
+      --bg2:#0b1729;
+      --card:rgba(255,255,255,.07);
+      --line:rgba(255,255,255,.12);
+      --text:#f5f7fb;
+      --muted:#aab7ca;
+      --cyan:#4cc9f0;
+      --blue:#4f7cff;
+      --violet:#8b5cf6;
+      --green:#2dd4bf;
+      --shadow:0 24px 70px rgba(0,0,0,.35);
+      --radius:24px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(circle at 15% 10%,rgba(79,124,255,.22),transparent 28%),
+        radial-gradient(circle at 85% 25%,rgba(139,92,246,.18),transparent 30%),
+        linear-gradient(180deg,var(--bg),#081422 55%,#07111f);
+      min-height:100vh;
+    }
+    a{color:inherit;text-decoration:none}
+    .wrap{width:min(1160px,calc(100% - 40px));margin:auto}
+    header{
+      position:sticky;top:0;z-index:30;
+      backdrop-filter:blur(16px);
+      background:rgba(7,17,31,.72);
+      border-bottom:1px solid rgba(255,255,255,.07);
+    }
+    .nav{height:76px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+    .brand{display:flex;align-items:center;gap:12px;font-weight:800;letter-spacing:.04em}
+    .mark{
+      width:40px;height:40px;border-radius:13px;
+      display:grid;place-items:center;font-weight:900;
+      background:linear-gradient(135deg,var(--cyan),var(--blue) 52%,var(--violet));
+      box-shadow:0 10px 30px rgba(79,124,255,.28);
+    }
+    .brand small{display:block;color:var(--muted);font-size:10px;letter-spacing:.18em;font-weight:700;margin-top:1px}
+    nav{display:flex;align-items:center;gap:24px;color:#d7e0ed;font-size:14px}
+    nav a:hover{color:white}
+    .nav-cta{padding:11px 16px;border:1px solid var(--line);border-radius:12px;background:rgba(255,255,255,.05)}
+    .hero{padding:92px 0 64px;position:relative;overflow:hidden}
+    .hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:center}
+    .eyebrow{
+      display:inline-flex;align-items:center;gap:9px;
+      color:#dce7f8;background:rgba(255,255,255,.06);border:1px solid var(--line);
+      padding:8px 12px;border-radius:999px;font-size:13px;margin-bottom:24px
+    }
+    .dot{width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 18px var(--green)}
+    h1{font-size:clamp(48px,7vw,82px);line-height:.96;margin:0 0 24px;letter-spacing:-.055em}
+    .gradient-text{background:linear-gradient(90deg,#fff 0%,#a9dbff 42%,#9e8cff 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+    .hero p{font-size:clamp(18px,2.1vw,22px);line-height:1.6;color:var(--muted);max-width:680px;margin:0 0 34px}
+    .actions{display:flex;flex-wrap:wrap;gap:14px}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:14px 20px;border-radius:14px;font-weight:750;font-size:15px;border:1px solid transparent;transition:.2s ease}
+    .btn-primary{background:linear-gradient(135deg,var(--blue),var(--violet));box-shadow:0 14px 35px rgba(79,124,255,.25)}
+    .btn-secondary{border-color:var(--line);background:rgba(255,255,255,.045);color:#e7edf7}
+    .btn:hover{transform:translateY(-2px)}
+    .visual{
+      position:relative;min-height:430px;border:1px solid var(--line);border-radius:34px;
+      background:linear-gradient(145deg,rgba(255,255,255,.08),rgba(255,255,255,.025));
+      box-shadow:var(--shadow);overflow:hidden;padding:28px
+    }
+    .orb{position:absolute;border-radius:50%;filter:blur(2px)}
+    .orb.one{width:210px;height:210px;right:-60px;top:-50px;background:radial-gradient(circle,#6ca9ff,rgba(79,124,255,.1) 68%,transparent 70%);opacity:.7}
+    .orb.two{width:170px;height:170px;left:-55px;bottom:-55px;background:radial-gradient(circle,#9b6cff,rgba(139,92,246,.06) 70%,transparent 72%);opacity:.65}
+    .screen{position:relative;z-index:2;background:#0b1626;border:1px solid rgba(255,255,255,.11);border-radius:22px;padding:20px;box-shadow:0 18px 60px rgba(0,0,0,.35)}
+    .screen-top{display:flex;gap:7px;margin-bottom:24px}.screen-top i{width:8px;height:8px;border-radius:50%;background:#33435a}
+    .mini-title{font-size:13px;color:#8fa0b7;text-transform:uppercase;letter-spacing:.12em;margin-bottom:10px}
+    .screen h3{font-size:30px;margin:0 0 14px;letter-spacing:-.03em}
+    .screen p{font-size:14px;margin:0;color:#91a0b4;line-height:1.5}
+    .stack{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:22px}
+    .chip{padding:15px;border:1px solid rgba(255,255,255,.09);background:rgba(255,255,255,.045);border-radius:16px}
+    .chip strong{display:block;font-size:14px;margin-bottom:4px}.chip span{font-size:12px;color:#8fa0b7}
+    section{padding:74px 0}
+    .section-head{max-width:760px;margin-bottom:34px}
+    .kicker{color:#8ebeff;font-size:13px;font-weight:800;letter-spacing:.13em;text-transform:uppercase;margin-bottom:10px}
+    h2{font-size:clamp(34px,5vw,52px);line-height:1.06;letter-spacing:-.04em;margin:0 0 14px}
+    .section-head p{color:var(--muted);font-size:18px;line-height:1.65;margin:0}
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .card{position:relative;padding:26px;border:1px solid var(--line);background:var(--card);border-radius:var(--radius);min-height:230px;overflow:hidden}
+    .card:after{content:"";position:absolute;width:140px;height:140px;border-radius:50%;right:-70px;bottom:-70px;background:radial-gradient(circle,rgba(79,124,255,.22),transparent 70%)}
+    .icon{width:46px;height:46px;border-radius:14px;display:grid;place-items:center;background:linear-gradient(135deg,rgba(76,201,240,.19),rgba(139,92,246,.18));border:1px solid rgba(255,255,255,.09);font-size:22px;margin-bottom:24px}
+    .card h3{font-size:21px;margin:0 0 10px}.card p{color:var(--muted);line-height:1.6;font-size:15px;margin:0 0 16px}
+    .card a{font-weight:750;font-size:14px;color:#bcd7ff;position:relative;z-index:2}
+    .featured{border-color:rgba(76,201,240,.28);background:linear-gradient(150deg,rgba(76,201,240,.11),rgba(79,124,255,.07),rgba(255,255,255,.035))}
+    .band{margin-top:24px;padding:28px;border:1px solid var(--line);border-radius:var(--radius);background:linear-gradient(105deg,rgba(79,124,255,.16),rgba(139,92,246,.12),rgba(45,212,191,.07));display:flex;align-items:center;justify-content:space-between;gap:24px}
+    .band strong{display:block;font-size:24px;margin-bottom:6px}.band span{color:var(--muted)}
+    .values{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+    .value{padding:26px;border-left:2px solid rgba(76,201,240,.55);background:rgba(255,255,255,.025);border-radius:0 18px 18px 0}
+    .value h3{margin:0 0 8px}.value p{margin:0;color:var(--muted);line-height:1.6}
+    .cta{padding:34px;border-radius:30px;border:1px solid var(--line);background:linear-gradient(135deg,rgba(79,124,255,.18),rgba(139,92,246,.16));display:grid;grid-template-columns:1fr auto;gap:24px;align-items:center}
+    .cta h2{font-size:clamp(30px,4vw,46px);margin-bottom:10px}.cta p{color:var(--muted);margin:0;line-height:1.6}
+    footer{padding:36px 0 46px;color:#8795aa;font-size:13px}
+    .footer{display:flex;align-items:center;justify-content:space-between;gap:20px;border-top:1px solid rgba(255,255,255,.08);padding-top:28px}
+    @media (max-width:900px){
+      nav a:not(.nav-cta){display:none}.hero{padding-top:66px}.hero-grid{grid-template-columns:1fr}.visual{min-height:auto}.grid{grid-template-columns:1fr 1fr}.cta{grid-template-columns:1fr}.values{grid-template-columns:1fr}
+    }
+    @media (max-width:640px){
+      .wrap{width:min(100% - 28px,1160px)}.nav{height:68px}.brand span{font-size:14px}.brand small{font-size:9px}.nav-cta{padding:9px 12px;font-size:13px}
+      .hero{padding:52px 0 40px}.hero-grid{gap:34px}.hero p{font-size:17px}.actions{display:grid;grid-template-columns:1fr}.btn{width:100%}.visual{padding:18px;border-radius:26px}.screen{padding:18px}.stack{grid-template-columns:1fr}.grid{grid-template-columns:1fr}.band{align-items:flex-start;flex-direction:column}.footer{align-items:flex-start;flex-direction:column}
+      section{padding:56px 0}
+    }
+  </style>
 </head>
 <body>
-  <h1>OMLIG MX</h1>
-  <p>Digital Solutions</p>
+  <header>
+    <div class="wrap nav">
+      <a class="brand" href="#inicio" aria-label="OMLIG MX inicio">
+        <div class="mark">O</div>
+        <span>OMLIG MX<small>DIGITAL SOLUTIONS</small></span>
+      </a>
+      <nav aria-label="Navegación principal">
+        <a href="#soluciones">Soluciones</a>
+        <a href="#nosotros">Nosotros</a>
+        <a href="#contacto" class="nav-cta">Hablemos</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="inicio">
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div>
+          <div class="eyebrow"><span class="dot"></span> Tecnología útil para negocios reales</div>
+          <h1><span class="gradient-text">Soluciones digitales</span><br>que hacen avanzar.</h1>
+          <p>OMLIG MX integra tecnología, automatización e inteligencia artificial para crear herramientas simples, modernas y enfocadas en resultados.</p>
+          <div class="actions">
+            <a class="btn btn-primary" href="#soluciones">Conoce nuestras soluciones →</a>
+            <a class="btn btn-secondary" href="https://mxbusinesscard.com" target="_blank" rel="noopener">Ver MX Business Card</a>
+          </div>
+        </div>
+        <div class="visual" aria-label="Ecosistema digital OMLIG MX">
+          <div class="orb one"></div><div class="orb two"></div>
+          <div class="screen">
+            <div class="screen-top"><i></i><i></i><i></i></div>
+            <div class="mini-title">Ecosistema OMLIG MX</div>
+            <h3>Una marca. Múltiples soluciones.</h3>
+            <p>Productos digitales diseñados para conectar personas, negocios y tecnología de forma práctica.</p>
+            <div class="stack">
+              <div class="chip"><strong>MX Business Card</strong><span>Identidad y contacto digital</span></div>
+              <div class="chip"><strong>Automatización</strong><span>Procesos más ágiles</span></div>
+              <div class="chip"><strong>Inteligencia Artificial</strong><span>Herramientas que potencian</span></div>
+              <div class="chip"><strong>Experiencias Creativas</strong><span>Contenido personalizado</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="soluciones">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="kicker">Soluciones</div>
+          <h2>Un ecosistema que puede crecer contigo.</h2>
+          <p>OMLIG MX funciona como una plataforma de soluciones digitales. Empezamos por necesidades concretas y construimos productos que aportan valor desde el primer uso.</p>
+        </div>
+        <div class="grid">
+          <article class="card featured">
+            <div class="icon">▣</div>
+            <h3>MX Business Card</h3>
+            <p>Tarjeta digital inteligente para profesionales y empresas: contacto, presencia, contenido y métricas en un solo lugar.</p>
+            <a href="https://mxbusinesscard.com" target="_blank" rel="noopener">Visitar producto →</a>
+          </article>
+          <article class="card">
+            <div class="icon">⚡</div>
+            <h3>Automatización</h3>
+            <p>Flujos y herramientas para reducir tareas repetitivas, acelerar seguimiento y mejorar la operación comercial.</p>
+            <a href="#contacto">Conocer posibilidades →</a>
+          </article>
+          <article class="card">
+            <div class="icon">✦</div>
+            <h3>Inteligencia Artificial</h3>
+            <p>Aplicaciones de IA orientadas a atención, ventas, contenido, capacitación y productividad.</p>
+            <a href="#contacto">Explorar soluciones →</a>
+          </article>
+          <article class="card">
+            <div class="icon">♫</div>
+            <h3>Experiencias personalizadas</h3>
+            <p>Canciones, historias y contenido digital creados alrededor de personas, marcas y momentos especiales.</p>
+            <a href="#contacto">Solicitar información →</a>
+          </article>
+          <article class="card">
+            <div class="icon">◎</div>
+            <h3>CRM & seguimiento</h3>
+            <p>Soluciones pensadas para ordenar conversaciones, oportunidades, prospectos y procesos de venta.</p>
+            <a href="#contacto">Próximamente →</a>
+          </article>
+          <article class="card">
+            <div class="icon">↗</div>
+            <h3>Nuevos productos</h3>
+            <p>OMLIG MX está diseñado para incorporar nuevas herramientas sin perder una identidad tecnológica común.</p>
+            <a href="#contacto">Conoce la visión →</a>
+          </article>
+        </div>
+        <div class="band">
+          <div><strong>Digital no tiene que significar complicado.</strong><span>Buscamos que cada solución sea clara, útil y fácil de adoptar.</span></div>
+          <a class="btn btn-secondary" href="#contacto">Platiquemos</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="nosotros">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="kicker">OMLIG MX</div>
+          <h2>Tecnología con propósito práctico.</h2>
+          <p>No buscamos desarrollar tecnología por desarrollar. Partimos de problemas cotidianos y construimos soluciones digitales que puedan entenderse, usarse y medirse.</p>
+        </div>
+        <div class="values">
+          <div class="value"><h3>Simple primero</h3><p>La tecnología debe facilitar el trabajo, no convertirse en otra carga para el usuario.</p></div>
+          <div class="value"><h3>Diseñado para crecer</h3><p>Productos modulares y una marca capaz de evolucionar con nuevas necesidades y mercados.</p></div>
+          <div class="value"><h3>Enfoque comercial</h3><p>Las soluciones se piensan con objetivos concretos: contacto, conversión, productividad y experiencia.</p></div>
+          <div class="value"><h3>Innovación útil</h3><p>IA, automatización y creatividad aplicadas donde realmente pueden aportar valor.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contacto">
+      <div class="wrap">
+        <div class="cta">
+          <div>
+            <div class="kicker">Contacto</div>
+            <h2>¿Tienes una necesidad digital?</h2>
+            <p>Cuéntanos qué quieres resolver. Podemos ayudarte a definir la solución adecuada dentro del ecosistema OMLIG MX.</p>
+          </div>
+          <a class="btn btn-primary" href="mailto:contacto@omlig.com">contacto@omlig.com</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap footer">
+      <div>© <span id="year"></span> OMLIG MX. Digital Solutions.</div>
+      <div>omlig.com</div>
+    </div>
+  </footer>
+  <script>document.getElementById('year').textContent=new Date().getFullYear();</script>
 </body>
 </html>
